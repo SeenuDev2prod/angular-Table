@@ -1,0 +1,57 @@
+<div class="archive_list">
+  <h4>
+    <i (click)="backToMainTemplate()" class="pi pi-arrow-left"> </i>
+    {{ "VrmModule.Questionaries.Archive.title" | translate }} <span>( 2 )</span>
+  </h4>
+
+  <div class="archive_list_content">
+    <div class="archive_list_table">
+      <p-table
+        sortField="1"
+        [value]="archiveListData"
+        dataKey="code"
+        responsiveLayout="scroll"
+        [rows]="8"
+        [paginator]="getPagniationBoolean(archiveListData)"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 4rem">{{ "" }}</th>
+            <th>
+              {{
+                "VrmModule.Questionaries.Archive.table.Questionnaire"
+                  | translate
+              }}
+            </th>
+            <th>
+              {{ "VrmModule.Questionaries.Archive.table.SentTo" | translate }}
+            </th>
+            <th>
+              {{ "VrmModule.Questionaries.Archive.table.SentOn" | translate }}
+            </th>
+            <th>
+              {{ "VrmModule.Questionaries.Archive.table.Due" | translate }}
+            </th>
+            <th>
+              {{ "VrmModule.Questionaries.Archive.table.Status" | translate }}
+            </th>
+            <th>{{ "" }}</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-archiveListData>
+          <tr>
+            <td>{{ archiveListData.sno }}</td>
+            <td>{{ archiveListData.questionName }}</td>
+            <td>{{ archiveListData.sentTo }}</td>
+            <td>{{ archiveListData.sentOn }}</td>
+            <td>{{ archiveListData.dueDate }}</td>
+            <td>{{ archiveListData.status }}</td>
+            <td>
+              <p-button label="unarchive"></p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
